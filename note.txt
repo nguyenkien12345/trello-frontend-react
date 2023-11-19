@@ -1,0 +1,50 @@
+1) + Khi chúng ta chạy câu lệnh: yarn dev --host => Lúc này toàn bộ các thiết bị đang sử dụng chung mạng wifi đều
+sẽ có thể truy cập được ứng dụng của chúng ta qua localhost thông qua network
+
+2) + Trong file package.json đoạn scripts "dev": "vite" chúng ta sẽ thêm option --host để nó có thêm các option network cho phép các thiết bị đang sử dụng chung
+mạng wifi đều sẽ có thể truy cập được ứng dụng của chúng ta qua localhost thông qua network =>  "dev": "vite --host"
+
+3) + Trong file package.json đoạn scripts "build": "vite build" chúng ta sẽ thêm option --base=./ để đảm bảo mỗi khi build ra folder dist thì trong file html
+các dòng liên kết link với thuộc tính href, scripts với thuộc tính src sẽ luôn luôn là bắt đầu là ./
+(Nếu như ta không muốn thêm option --base=./ vào đoạn scripts build thì ta vẫn có 1 cách làm khác là thêm option base: './' vào trong file vite.config.js)
+
+4) + Trong file package.json đoạn scripts "preview": "vite preview" chỉ hoạt động khi chúng ta đã build folder dist (Xem trước sản phẩm production ở dưới local trước khi deploy)
+
+5) + Đối với các file có đuôi là jsx,tsx => Áp dụng cho các file component (Viết html trong js)
+Còn lại trong ta sẽ khai báo các file là js,ts như bình thường (Nếu không viết html trong js)
+
+6) + Trong file package.json đoạn scripts: "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0", (eslint chạy vào folder src kiểm tra xem 
+có code chỗ nào xấu, bẩn, lỗi thì nó sẽ báo lỗi ra)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+  rules: {
+    'react-refresh/only-export-components': 'warn', // rule này là của thư viện react-refresh. Có sẵn lúc khởi tạo dự án với vite
+    'react-hooks/rules-of-hooks': 'error',          // rule này là của thư viện react-hooks. Áp dụng đối với toàn bộ hook của react
+    'react-hooks/exhaustive-deps': 'warn',          // rule này là của thư viện react-hooks. Trong useEffect nếu không có dependencies thì nó sẽ hiển thị warning
+    'react/prop-types': 0,                          // rule này là của thư viện react. 0 có nghĩa là không áp dụng (Không hiển thị warning, lỗi)
+    'react/display-name': 0,                        // rule này là của thư viện react. 0 có nghĩa là không áp dụng (Không hiển thị warning, lỗi)
+
+    // 1 có nghĩa là warning
+    // 2 có nghĩa là error
+    // 0 có nghĩa là không áp dụng
+
+    'no-console': 1,                                // Không sử dụng console.log trong dự án
+    'no-lonely-if': 1,                              // Không sử dụng if trong else mà thay vào đó sử dụng else if
+    'no-unused-vars': 1,                            // Khai báo biến nhưng không sử dụng đến mà để không
+    'no-trailing-spaces': 1,                        // Thừa dấu cách, space ở cuối dòng code
+    'no-multi-spaces': 1,                           // Thừa quá nhiều dấu cách, space
+    'no-multiple-empty-lines': 1,                   // Thừa quá nhiều dòng rỗng
+    'space-before-blocks': ['error', 'always'],     // Nên có khoảng trắng trước ngoặc mở và ngoặc đóng của các block. vd: Đúng: if { console.log('NTK) }, Sai: if{console.log('NTK')}
+    'object-curly-spacing': [1, 'always'],          // Khi mở và đóng ngoặc thẻ cho 1 object nên có 1 khoảng trắng trước thẻ mở và thẻ đóng
+    'indent': ['warn', 2],                          // Chỉ cho phép indent của chúng ta là 2
+    'semi': [1, 'never'],                           // Không sử dụng dấu ; cuối dòng code
+    'quotes': ['error', 'single'],                  // Sử dụng '', không sử dụng ""
+    'array-bracket-spacing': 1,                     // Khi mở và đóng ngoặc thẻ cho 1 array không nên có bất kỳ khoảng trắng nào trước thẻ mở và thẻ đóng
+    'linebreak-style': 0,                           // Không áp dụng báo lỗi xuống dòng (vì có nhiều hệ điều hành như macos, windows, linus, ...)
+    'no-unexpected-multiline': 'warn',              // 
+    'keyword-spacing': 1,                           //
+    'comma-dangle': 1,                              // Không để dư thừa dấu , tại property của cùng của 1 object. Đảm bảo các thuộc tính cuối cùng của object không có dấu ,
+    'comma-spacing': 1,                             //
+    'arrow-spacing': 1                              //           
+  }
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 

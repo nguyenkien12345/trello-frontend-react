@@ -1,0 +1,4 @@
+# Chúng ta sẽ không muốn eslint check, kiểm tra những file này (Bỏ qua không áp dụng eslint đối với những file này)
+node_modules
+src/serviceWorker.js
+src/reportWebVitals.js
