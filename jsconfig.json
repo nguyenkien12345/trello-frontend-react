@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "paths": {
+        "~/*": ["./src/*"], // Khi click vô các đường dẫn import thì nó sẽ lập tức đi đến file đó
+      },
+    }
+}
+  
