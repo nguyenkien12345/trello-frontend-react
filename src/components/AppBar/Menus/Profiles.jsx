@@ -33,7 +33,7 @@ function Profiles() {
           aria-expanded={open ? 'true' : undefined}
         >
           <Avatar
-            sx={{ width: 30, height: 30 }}
+            sx={{ width: 36, height: 36 }}
             src='https://media.licdn.com/dms/image/D5603AQHG5raebuCnBA/profile-displayphoto-shrink_800_800/0/1677594302126?e=1707955200&v=beta&t=BHPLOHaGrPpgkNCE2PlR0DLnB334M1vZmiZ8jLD9oCA'
             alt='Mai Thị Thanh Thúy'
           />

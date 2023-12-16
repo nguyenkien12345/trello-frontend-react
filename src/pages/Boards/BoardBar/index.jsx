@@ -12,14 +12,14 @@ import FilterListIcon from '@mui/icons-material/FilterList'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 
 const MENU_STYLE = {
-  color: 'primary.main',
-  bgcolor: 'white',
+  color: 'white',
+  bgcolor: 'transparent',
   border: 'none',
   paddingX: '5px',
   borderRadius: '5px',
   // & ở đây chính là component Chip (Chúng ta sẽ đi từ thằng Chip tìm đến thằng con MuiSvgIcon-root)
   '& .MuiSvgIcon-root': {
-    color: 'primary.main'
+    color: 'white'
   },
   '&:hover': {
     bgcolor: 'primary.50'
@@ -37,7 +37,8 @@ function BoardBar() {
       gap: 2,
       paddingX: 2,
       overflowX: 'auto',
-      borderTop: '1px solid #00bfa5'
+      borderBottom: '1px solid white',
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2')
     }}>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -74,17 +75,29 @@ function BoardBar() {
       </Box>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Button variant='outlined' startIcon={<PersonAddIcon/>}>Invite</Button>
+        <Button
+          sx={{
+            color: 'white',
+            borderColor: 'white',
+            '&:hover': { borderColor: 'white' }
+          }}
+          variant='outlined'
+          startIcon={<PersonAddIcon/>}
+        >
+        Invite
+        </Button>
 
-        <AvatarGroup 
+        <AvatarGroup
           max={4}
           sx={{
+            gap: '10px',
             // & ở đây chính là component AvatarGroup (Chúng ta sẽ đi từ thằng AvatarGroup tìm đến thằng con MuiAvatar-root)
             // css cho các thẻ Avartar con bên trong AvatarGroup
             '& .MuiAvatar-root': {
               width: 34,
               height: 34,
-              fontSize: 16
+              fontSize: 16,
+              border: 'none'
             }
           }}
         >
