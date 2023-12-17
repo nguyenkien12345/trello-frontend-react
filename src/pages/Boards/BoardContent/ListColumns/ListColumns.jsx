@@ -3,7 +3,9 @@ import Button from '@mui/material/Button'
 import Column from './Column/Column'
 import NoteAddIcon from '@mui/icons-material/NoteAdd'
 
-function ListColumns() {
+function ListColumns({ columns }) {
+  const showColumns = columns?.map((column) => <Column key={column._id} column={column} />)
+
   return (
     <Box sx={{
       // Trick xử lý scrollbar
@@ -17,8 +19,8 @@ function ListColumns() {
       '&::-webkit-scrollbar-track': { m: 2 }
     }}
     >
-      <Column />
-      <Column />
+
+      {showColumns}
       <Box sx={{
         minWidth: '200px',
         maxWidth: '200px',
@@ -40,6 +42,7 @@ function ListColumns() {
           Add new column
         </Button>
       </Box>
+
     </Box>
   )
 }

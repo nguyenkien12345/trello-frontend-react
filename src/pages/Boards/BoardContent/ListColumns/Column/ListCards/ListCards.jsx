@@ -1,7 +1,9 @@
 import Box from '@mui/material/Box'
 import Card from './Card/Card'
 
-function ListCards() {
+function ListCards({ cards }) {
+  const showCards = cards?.map((card) => <Card key={card._id} card={card}/>)
+
   return (
     <Box sx={{
       // Start Tip tricks scrollbar (Bắt buộc phải có padding và margin)
@@ -26,7 +28,9 @@ function ListCards() {
         backgroundColor: '#bfc2cf'
       }
     }}>
-      <Card />
+
+      {showCards}
+
     </Box>
   )
 }

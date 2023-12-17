@@ -10,6 +10,7 @@ import AddToDriveIcon from '@mui/icons-material/AddToDrive'
 import BoltIcon from '@mui/icons-material/Bolt'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
+import { capitalizeFirstLetter } from '~/utils/formatters'
 
 const MENU_STYLE = {
   color: 'white',
@@ -26,7 +27,7 @@ const MENU_STYLE = {
   }
 }
 
-function BoardBar() {
+function BoardBar({ board }) {
   return (
     <Box sx={{
       width: '100%',
@@ -45,13 +46,13 @@ function BoardBar() {
         <Chip
           sx = {MENU_STYLE}
           icon={<DashboardIcon />}
-          label="NguyenTrungKien Mern Stack Board"
+          label={board?.title}
           onClick={() => {}}
         />
         <Chip
           sx = {MENU_STYLE}
           icon={<VpnLockIcon />}
-          label="Public/Private Workspace"
+          label={`${capitalizeFirstLetter(board?.type)} Workspace`}
           onClick={() => {}}
         />
         <Chip
