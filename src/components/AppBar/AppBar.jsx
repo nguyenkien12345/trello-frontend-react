@@ -15,7 +15,7 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import SearchIcon from '@mui/icons-material/Search'
-import ModeSelect from '~/components/ModeSelect'
+import ModeSelect from '~/components/ModeSelect/ModeSelect'
 import Workspaces from './Menus/Workspaces'
 import Recent from './Menus/Recent'
 import Templates from './Menus/Templates'
@@ -34,7 +34,8 @@ function AppBar() {
       gap: 2,
       paddingX: 2,
       overflowX: 'auto',
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#2c3e50' : '#1565c0')
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#2c3e50' : '#1565c0'),
+      '&::-webkit-scrollbar-track': { m: 2 }
     }}>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>

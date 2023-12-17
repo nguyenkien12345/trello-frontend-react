@@ -1,11 +1,21 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
 // import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
 
+// Khai báo chiều cao cho app bar, board bar, board content
+const APP_BAR_HEIGHT = '68px'
+const BOARD_BAR_HEIGHT = '78px'
+const BOARD_CONTENT_HEIGHT = `calc(100vh - ${APP_BAR_HEIGHT} - ${BOARD_BAR_HEIGHT})`
+const COLUMN_HEADER_HEIGHT = '50px'
+const COLUMN_FOOTER_HEIGHT = '56px'
+
 const theme = extendTheme({
   // Tạo ra bộ css custom riêng của chúng ta
   trello: {
-    appBarHeight: '68px',
-    boardBarheight: '78px'
+    appBarHeight: APP_BAR_HEIGHT,
+    boardBarHeight: BOARD_BAR_HEIGHT,
+    boardContentHeight: BOARD_CONTENT_HEIGHT,
+    columnHeaderHeight: COLUMN_HEADER_HEIGHT,
+    columnFooterHeight: COLUMN_FOOTER_HEIGHT
   },
   colorSchemes: {
     // light: {
@@ -26,13 +36,13 @@ const theme = extendTheme({
   components: {
     // Theme Override (Ghi đè các thuộc tính mặc định của hệ thống MUI SYSTEM) với styleOverrides
     // Tên của component MUI SYSTEM
-    // MUICssBaseline là component liên quan đến cấu hình css toàn bộ các trình duyệt. Riêng với
-    // component MuiCssBaseline sẽ dùng body chứ không dùng root như các component khác của MUI
+    // MUICssBaseline là component liên quan đến cấu hình css toàn bộ các trình duyệt
+    // như firefox, cốc cốc, google, Edge,.... Riêng với component MuiCssBaseline sẽ dùng body chứ
+    // không dùng root như các component khác của MUI
     MuiCssBaseline: {
       styleOverrides:{
         body: {
-          // Chúng ta sẽ cấu hình đảm bảo scrollbar trên các trình duyệt phải giống hệt nhau
-          // *:: apply cho toàn bộ tất cả các scrollbar trong trình duyệt của mình
+          // *:: áp dụng cho toàn bộ tất cả các scrollbar trên trang web của chúng ta trong tất cả các trình duyệt browser
           '*::-webkit-scrollbar': {
             width: '8px',
             heighit: '8px'
@@ -66,6 +76,18 @@ const theme = extendTheme({
         }
       }
     },
+    MuiTypography: {
+      styleOverrides:{
+        root: ({ theme }) => {
+          return {
+            // Chỉ áp dụng cho các thẻ Typography có variant là body1
+            '&.MuiTypography-body1': {
+              fontSize: '0.875rem'
+            }
+          }
+        }
+      }
+    },
     MuiOutlinedInput: {
       styleOverrides:{
         // Chúng ta cũng có thể chuyển nó về dạng function để lấy ra prop theme và thực hiện Override
@@ -74,11 +96,7 @@ const theme = extendTheme({
           return {
             // color: theme.palette.primary.main,
             fontSize: '0.875rem',
-            // Không phải bất cứ thuộc tính nào cũng có thể ghi đè bằng cách sử dụng key:value đôi lúc
-            // có 1 vài thuộc tính phải ghi đè bằng cách khác
             '.MuiOutlinedInput-notchedOutline': {
-              // Nếu chúng ta sử dụng borderColor: theme.palette.primary.light mà không gọi bên trong MuiOutlinedInput-notchedOutline
-              // thì nó sẽ không hoạt động
               // borderColor: theme.palette.primary.light
             },
             '&:hover': {
